@@ -15,28 +15,28 @@ function loadEventListeners() {
 function addTask(e) {
   if (taskInput.value === '') {
     alert('Add a task!');
+  } else {
+    // Create li element for new task
+    const li = document.createElement('li');
+    // Add class to li
+    li.className = 'collection-item';
+    // Create text node and append to li
+    li.appendChild(document.createTextNode(taskInput.value));
+    // Create new link element to delete task
+    const link = document.createElement('a');
+    // Add class to delete link
+    link.className = 'delete-item secondary-content';
+    // Add icon html
+    link.innerHTML = '<i class="fa fa-remove"></i>'
+    // Append link to li
+    li.appendChild(link);
+
+    // Append li to ul
+    taskList.appendChild(li);
+
+    // Clear input
+    taskInput.value = '';
   }
-
-  // Create li element for new task
-  const li = document.createElement('li');
-  // Add class to li
-  li.className = 'collection-item';
-  // Create text node and append to li
-  li.appendChild(document.createTextNode(taskInput.value));
-  // Create new link element to delete task
-  const link = document.createElement('a');
-  // Add class to delete link
-  link.className = 'delete-item secondary-content';
-  // Add icon html
-  link.innerHTML = '<i class="fa fa-remove"></i>'
-  // Append link to li
-  li.appendChild(link);
-
-  // Append li to ul
-  taskList.appendChild(li);
-
-  // Clear input
-  taskInput.value = '';
 
   e.preventDefault();
 }
